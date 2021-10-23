@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tres en Raya</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles.css" type="text/css" media="screen">
+    <script src="./index.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <header class="mb-3">
+                <h1 class="col-md-12">Tres en Raya</h1>
+                <form action="" onchange="playerSelector(event)">
+                    <legend>Elige el tipo de juego</legend>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="humans" value="humans" checked>
+                        <label class="form-check-label" for="humans">Humano vs Humano</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="vsPc" value="vsPc">
+                        <label class="form-check-label" for="vsPc">Humano contra máquina</label>
+                      </div>
+                </form>
+            </header>
+            <main id="ticTacContainer" class="col-md-12">
+
+            </main>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div class="row">
+            <button id="reiniciar" onclick="reinitMethod()">Reiniciar</button>
+        </div>
+    </div>
+</body>
+
+</html>
