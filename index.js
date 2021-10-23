@@ -14,6 +14,11 @@ const jugadorPc = {
     symbol: 'O'
 };
 
+let celdas;
+const player1 = jugador1;
+let player2 = jugador2;
+
+let playerActive = player1;
 
 
 //Módulo de construcción
@@ -38,22 +43,29 @@ function crearTablero() { //Crear Tablero
         tabla.appendChild(tblBody);
     }
 
-    containerSelected.appendChild(tblBody)
+    containerSelected.appendChild(tblBody);
+    celdas = document.querySelectorAll('td');
 }
 
 crearTablero();
 
 function playerSelector(e){
-    player2 = jugadorPc;
+    player2 = player2 === jugador2 ? jugadorPc : jugador2;
+    playerActive = jugador1;
+    reinitMethod();
 }
 
+//Botón Reiniciar
 
+function reinitMethod() {
+    const containerSelected = document.querySelector(`#${container}`).innerHTML = '';
+    crearTablero();
+}
 
 
 //Módulo lógica
 
 //Lógica que comprueba si ha ganado
-const celdas = document.querySelectorAll('td');
 
 function checkIfWin( horizontal, vertical ) {
 
@@ -96,12 +108,6 @@ function checkDiagonales(idHorizontal, idVertical) {
         }
 }
 
-//Crear objeto jugador
-const player1 = jugador1;
-let player2 = jugador2;
-let count = 0;
-
-let playerActive = player1;
 
 // Modificar celdas
 function checkCelda(event) {
@@ -109,10 +115,8 @@ function checkCelda(event) {
         event.target.innerHTML = playerActive.symbol;
         checkIfWin(event.target.dataset.horizontal, event.target.dataset.vertical);
         playerActive = playerActive === player1 ? player2 : player1;
-        count++;
         if ( !playerActive.isHuman ) {
             turnoMaquina();
-            count++;
         }
     }
 }
@@ -134,9 +138,3 @@ function turnoMaquina() {
 }
 
 
-//Botón Reiniciar
-
-function reinitMethod() {
-    const containerSelected = document.querySelector(`#${container}`).innerHTML = '';
-    crearTablero();
-}
